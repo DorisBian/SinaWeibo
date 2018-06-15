@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group>
+        <item
+            android:id="@+id/head"
+            android:checkable="true"
+            android:icon="@drawable/ic_nature_people_grey_900_24dp"
+            android:title="@string/left_list_aboutMe" />
+        <item
+            android:id="@+id/my"
+            android:checkable="true"
+            android:icon="@drawable/ic_hot_tub_grey_900_24dp"
+            android:title="@string/left_list_my" />
+        <item
+            android:id="@+id/favourite"
+            android:checkable="true"
+            android:icon="@drawable/ic_home_grey_900_24dp"
+            android:title="@string/left_list_fav" />
+
+
+        <!--<item-->
+        <!--android:id="@+id/find"-->
+        <!--android:checkable="true"-->
+        <!--android:title="@string/left_list_find"-->
+        <!--android:icon="@drawable/ic_find_in_page_grey_900_24dp"/>-->
+        <!--<item-->
+        <!--android:id="@+id/nearBy"-->
+        <!--android:checkable="true"-->
+        <!--android:title="@string/left_list_nearBy"-->
+        <!--android:icon="@drawable/ic_place_grey_900_24dp"/>-->
+
+        <item
+            android:id="@+id/settings"
+            android:checkable="true"
+            android:icon="@drawable/ic_settings_grey_900_24dp"
+            android:title="@string/left_list_settings_exit" />
+    </group>
+</menu>

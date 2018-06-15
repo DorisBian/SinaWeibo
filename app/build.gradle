@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+
+android {
+    compileSdkVersion 25
+
+
+    defaultConfig {
+        applicationId "com.bzy.weibo"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+
+        //添加如下配置就OK了
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        vectorDrawables.useSupportLibrary = true
+    }
+    signingConfigs {
+        release {
+            keyAlias 'key0'
+            keyPassword '111111'
+            storeFile file('weibobzy.jks')
+            storePassword '111111'
+        }
+        debug {
+            keyAlias 'key0'
+            keyPassword '111111'
+            storeFile file('weibobzy.jks')
+            storePassword '111111'
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    packagingOptions {
+        exclude 'AndroidManifest.xml'
+    }
+    sourceSets
+            {
+                //默认的精简目录（包含对内对外，精简和普通包的核心代码）
+                main {
+                    jniLibs.srcDirs = ['src/main/jniLibs']
+                    manifest.srcFile 'src/main/AndroidManifest.xml'
+                    java.srcDirs = ['src/main/java']
+                    res.srcDirs 'src/main/res';
+                    assets.srcDirs 'src/main/assets'
+                }
+            }
+}
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.bzy.weibo.dao'
+    targetGenDir 'src/main/java'
+}
+
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
+    compile files('libs/lite-orm-1.9.2.jar')
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.android.support:design:25.1.1'
+    compile 'com.android.support:recyclerview-v7:25.1.1'
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.github.chrisbanes.photoview:library:1.2.3'
+    compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.wangjiegulu:RapidFloatingActionButton:1.0.3'
+    compile 'com.github.wangjiegulu:AndroidBucket:1.0.4'
+    compile 'com.nineoldandroids:library:2.4.0'
+    compile 'me.iwf.photopicker:PhotoPicker:0.8.5@aar'
+    compile 'com.github.razerdp:BasePopup:v1.1.7'
+    compile 'com.sina.weibo.sdk:core:4.1.0:openDefaultRelease@aar'
+    implementation 'org.greenrobot:greendao:3.2.2'
+}
